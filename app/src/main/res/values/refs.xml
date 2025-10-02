@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="gradient_background" />
+    <drawable name="ic_calculator" />
+    <drawable name="circle_decoration" />
+</resources>
