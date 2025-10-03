@@ -9,6 +9,20 @@
     android:padding="16dp"
     tools:context=".Kalkulator_Tabung">
 
+    <!-- Judul -->
+    <TextView
+        android:id="@+id/tvJudul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kalkulator Tabung"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
     <!-- Input Jari-Jari -->
     <EditText
         android:id="@+id/editJariJari"
@@ -16,9 +30,14 @@
         android:layout_height="wrap_content"
         android:hint="Masukkan Jari-jari"
         android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/tvJudul"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginHorizontal="32dp"/>
 
     <!-- Input Tinggi -->
     <EditText
@@ -28,32 +47,56 @@
         android:layout_marginTop="12dp"
         android:hint="Masukkan Tinggi"
         android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/editJariJari"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editJariJari" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="32dp"/>
 
-    <!-- Tombol Hitung -->
+    <!-- Tombol Hitung Luas -->
+    <Button
+        android:id="@+id/btnLuas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Hitung Luas"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/editTinggi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="32dp"/>
+
+    <!-- Tombol Hitung Volume -->
     <Button
         android:id="@+id/btnVolume"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Hitung Volume"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/btnLuas"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTinggi" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="32dp"/>
 
     <!-- Hasil -->
     <TextView
         android:id="@+id/tvHasil"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Hasil Volume: "
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Hasil :"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/btnVolume"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnVolume" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginHorizontal="32dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

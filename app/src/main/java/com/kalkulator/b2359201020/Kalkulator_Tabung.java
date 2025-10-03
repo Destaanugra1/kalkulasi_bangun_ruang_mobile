@@ -13,8 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Kalkulator_Tabung extends AppCompatActivity {
 
-    EditText editJariJari, editTinggi;
-    Button btnVolume;
+    EditText etJariJari, etTinggi;
+    Button btnLuas, btnVolume;
     TextView tvHasil;
 
     @Override
@@ -23,34 +23,54 @@ public class Kalkulator_Tabung extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_kalkulator_tabung);
 
-        // Inisialisasi View
-        editJariJari = findViewById(R.id.editJariJari);
-        editTinggi = findViewById(R.id.editTinggi);
-        btnVolume = findViewById(R.id.btnVolume);
-        tvHasil = findViewById(R.id.tvHasil);
-
-        // Logic Hitung Volume Tabung
-        btnVolume.setOnClickListener(v -> {
-            String jariInput = editJariJari.getText().toString();
-            String tinggiInput = editTinggi.getText().toString();
-
-            if (!jariInput.isEmpty() && !tinggiInput.isEmpty()) {
-                double r = Double.parseDouble(jariInput);
-                double t = Double.parseDouble(tinggiInput);
-
-                double volume = Math.PI * r * r * t;
-
-                tvHasil.setText("Hasil Volume: " + String.format("%.2f", volume));
-            } else {
-                tvHasil.setText("Mohon isi semua data!");
-            }
-        });
-
-        // Atur padding untuk system bar
+        // Supaya UI menyesuaikan notch/status bar
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Inisialisasi view
+        etJariJari = findViewById(R.id.editJariJari);
+        etTinggi   = findViewById(R.id.editTinggi);
+        btnLuas    = findViewById(R.id.btnLuas);
+        btnVolume  = findViewById(R.id.btnVolume);
+        tvHasil    = findViewById(R.id.tvHasil);
+
+        // Event klik tombol hitung LUAS
+        btnLuas.setOnClickListener(v -> {
+            if (isInputValid()) {
+                double r = Double.parseDouble(etJariJari.getText().toString());
+                double t = Double.parseDouble(etTinggi.getText().toString());
+
+                // Luas permukaan tabung = 2πr (r + t)
+                double luas = 2 * Math.PI * r * (r + t);
+
+                tvHasil.setText("Luas Tabung: " + luas);
+            } else {
+                tvHasil.setText("Mohon isi semua input!");
+            }
+        });
+
+        // Event klik tombol hitung VOLUME
+        btnVolume.setOnClickListener(v -> {
+            if (isInputValid()) {
+                double r = Double.parseDouble(etJariJari.getText().toString());
+                double t = Double.parseDouble(etTinggi.getText().toString());
+
+                // Volume tabung = π r² t
+                double volume = Math.PI * r * r * t;
+
+                tvHasil.setText("Volume Tabung: " + volume);
+            } else {
+                tvHasil.setText("Mohon isi semua input!");
+            }
+        });
+    }
+
+    // Fungsi untuk cek input tidak kosong
+    private boolean isInputValid() {
+        return !etJariJari.getText().toString().isEmpty()
+                && !etTinggi.getText().toString().isEmpty();
     }
 }
